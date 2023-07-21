@@ -7,7 +7,7 @@
       <q-img
         src="../../assets/countryFlags/brazil.svg"
         style="width: 32px; height: 24px; cursor: pointer"
-        @click="choiceLang('pt-br')"
+        @click="choiceLang('pt-BR')"
       />
       <q-img
         src="../../assets/countryFlags/united-states.svg"
@@ -34,7 +34,9 @@ export default {
 
       this.ChangeLanguage(lang)
       this.$i18n.locale = this.language.language
-      // set quasar's language too!!
+      import(`quasar/lang/${this.language.language}`).then(language => {
+        this.$q.lang.set(language.default)
+      })    // set quasar's language too!!
     }
   },
 }
