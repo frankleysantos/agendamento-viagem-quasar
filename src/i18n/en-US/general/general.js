@@ -6,5 +6,7 @@ export default {
         add: "To add",
         travelManagement: "Travel Management",
         home: "Home",
+        enterAllDigits: "Enter all digits",
+        invalidCpf: "Invalid cpf"
     }
 };

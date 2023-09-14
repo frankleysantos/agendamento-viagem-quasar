@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 import auth from "./auth";
 import vehicles from "./vehicles";
 import language from "./language";
+import passengers from "./passengers";
 
 
 // import example from './module-example'
@@ -21,7 +22,8 @@ export default store(function (/* { ssrContext } */) {
     modules: {
       auth,
       vehicles,
-      language
+      language,
+      passengers
     },
 
     // enable strict mode (adds overhead!)

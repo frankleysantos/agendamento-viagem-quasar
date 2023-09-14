@@ -56,6 +56,13 @@ export default {
           caption: 'vehicle',
           link: "/#/vehicles",
           icon: "no_crash"
+        },
+        {
+          keyI18n: 'passenger',
+          title: 'passenger',
+          caption: 'passenger',
+          link: "/#/passengers",
+          icon: "no_crash"
         }
       ]
     }

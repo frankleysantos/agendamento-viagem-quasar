@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '../store';
 
 const Connection = axios.create({
+    // baseURL: "http://192.168.1.14:8005/laravel-9/public/api/", // Sua URL de API
     baseURL: process.env.API_URL, // Sua URL de API
     headers: {
         'Content-Type': 'application/json'
@@ -23,7 +24,6 @@ Connection.interceptors.response.use(
     async (error) => {
         try {
             const originalConfig = error.config;
-            console.log('minha url', originalConfig.url)
             if (error.response.status === 401 && originalConfig.url != 'login') {
                 store().dispatch('auth/ActionLoginUserRefresh', true)
             }
