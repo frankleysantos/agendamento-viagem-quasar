@@ -5,6 +5,12 @@ import passengers from "./passengers";
 const routes = [
   {
     path: "/",
+    beforeEnter: (to, from, next) => {
+      if (to.name !== 'login' && !localStorage.getItem('token')) {
+        next({ path: 'login' });
+      } 
+      next();
+    },  
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { 
@@ -18,6 +24,7 @@ const routes = [
 
   {
     path: "/login",
+    name: "login",
     component: () => import("layouts/LoginLayout.vue"),
     children: [
       ...login,

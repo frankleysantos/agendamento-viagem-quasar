@@ -1,15 +1,15 @@
-export function ADD_VEHICLE(state, vechicle) {
-  state.vechicles.push(vechicle);
+export function ADD_VEHICLE(state, passenger) {
+  state.passengers.push(passenger);
 }
 
-export function SHOW_VEHICLES(state, vechicles) {
-  state.vechicles = vechicles;
+export function SHOW_PASSENGERS(state, passengers) {
+  state.passengers = passengers;
 }
 
-export function UPDATE_VEHICLE(state, vechicle) {
-  state.vechicles = [
-    ...state.vechicle.map((item) =>
-      item.id !== vechicle.id ? item : { ...item, ...vechicle }
+export function UPDATE_VEHICLE(state, passenger) {
+  state.passengers = [
+    ...state.passenger.map((item) =>
+      item.id !== passenger.id ? item : { ...item, ...passenger }
     ),
   ];
 }

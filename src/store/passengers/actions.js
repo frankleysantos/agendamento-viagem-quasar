@@ -1,10 +1,10 @@
 import { Connection } from "../../http/Connection";
 
-export async function ActionGetVehicles(context) {
+export async function ActionGetPassengers(context) {
   return await new Promise((resolve, reject) => {
     Connection
-      .get("vehicles/show")
-      .then((response) => context.commit("SHOW_VEHICLES", response.data))
+      .get("passengers/show")
+      .then((response) => context.commit("SHOW_PASSENGERS", response.data))
       .catch((error) => reject(error));
   })
 }

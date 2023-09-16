@@ -55,10 +55,12 @@ export default {
         }
     },
     methods: {
-        ...mapActions('passengers', ['ActionSavePassenger']),
+        ...mapActions('passengers', ['ActionSavePassenger', 'ActionGetPassengers']),
         savePassenger() {
 
-            this.ActionSavePassenger(this.passenger);
+            this.ActionSavePassenger(this.passenger).then((resp) => {
+                this.ActionGetPassengers();
+            });
         },
         validateFormCpf(val) {
             let cpf = String(val).replace(/[^\d]/g, '');
