@@ -36,7 +36,7 @@
             </q-input>
         </div>
         <div class="col-md">
-             <q-btn color="white" text-color="black" :label="$t('general.save')" @click="savePassenger"/>
+             <q-btn color="white" text-color="black" :label="!passenger.id ? $t('general.save') : 'atualizar'" @click="savePassenger"/>
         </div>
     </div>
 </template>
@@ -47,6 +47,7 @@ export default {
     data() {
         return {
           passenger: {
+            id: null,
             name: null,
             cpf: null,
             telephone: null,
@@ -54,21 +55,51 @@ export default {
           }  
         }
     },
+    props: {
+        passengerId: {
+            default: null,
+            type: Number
+        }
+    },
+    watch: {
+        passengerId: function(value) {
+            this.ActionGetPassenger(value).then((resp) => {
+                this.passenger = {
+                    id: resp.passengerId,
+                    name: resp.passenger,
+                    cpf: resp.cpf,
+                    telephone: resp.telephone,
+                    email: resp.email
+                }
+            })
+        }
+    },
     methods: {
-        ...mapActions('passengers', ['ActionSavePassenger', 'ActionGetPassengers']),
+        ...mapActions('passengers', ['ActionSavePassenger', 'ActionGetPassengers', 'ActionGetPassenger']),
         savePassenger() {
 
             this.ActionSavePassenger(this.passenger).then((resp) => {
                 this.ActionGetPassengers();
+                this.resetPassenger();
             });
         },
         validateFormCpf(val) {
-            let cpf = String(val).replace(/[^\d]/g, '');
-            if (cpf.length == 11) { 
-                return !validateCPF(val) ? this.$t('general.invalidCpf') : null;
-            } else {
-                return this.$t('general.enterAllDigits')
+            if (val) {
+                let cpf = String(val).replace(/[^\d]/g, '');
+                if (cpf.length == 11) { 
+                    return !validateCPF(val) ? this.$t('general.invalidCpf') : null;
+                } else {
+                    return this.$t('general.enterAllDigits')
+                }
             }
+            return null;
+        },
+        resetPassenger() {
+            this.passenger.id = null;
+            this.passenger.name =null;
+            this.passenger.cpf =null;
+            this.passenger.telephone =null;
+            this.passenger.email =null;
         }
     }
 }

@@ -7,6 +7,7 @@ export default {
         travelManagement: "Travel Management",
         home: "Home",
         enterAllDigits: "Enter all digits",
-        invalidCpf: "Invalid cpf"
+        invalidCpf: "Invalid cpf",
+        actions: "Actions"
     }
 };

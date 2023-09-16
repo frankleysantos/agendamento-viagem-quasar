@@ -1,5 +1,14 @@
 import { Connection } from "../../http/Connection";
 
+export async function ActionGetPassenger(context, payload) {
+  return await new Promise((resolve, reject) => {
+    Connection
+      .get(`passengers/find/${payload}`)
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error));
+  })
+}
+
 export async function ActionGetPassengers(context) {
   return await new Promise((resolve, reject) => {
     Connection
@@ -10,7 +19,6 @@ export async function ActionGetPassengers(context) {
 }
 
 export async function ActionSavePassenger(context, payload) {
-  console.log('passageiro');
   return await new Promise((resolve, reject) => {
     Connection.post("passengers/store", payload)
       .then((response) => resolve(response.data))

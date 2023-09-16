@@ -7,6 +7,7 @@ export default {
         travelManagement: "Gestão de Viagens",
         home: "Home",
         enterAllDigits: "Informe todos dos digitos",
-        invalidCpf: "CPF inválido"
+        invalidCpf: "CPF inválido",
+        actions: "Ações"
     }
 };

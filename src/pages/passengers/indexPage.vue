@@ -1,7 +1,7 @@
 <template lang="">
     <q-page padding>
-        <FormPassenger />
-        <QtablePassengers/>
+        <FormPassenger :passengerId="passengerId"/>
+        <QtablePassengers @editPassengerSon="sendEditPassengerId"/>
     </q-page>
 </template>
 <script>
@@ -11,6 +11,16 @@ export default {
     components: {
         FormPassenger,
         QtablePassengers
+    },
+    data() {
+        return {
+            passengerId: null,
+        }
+    },
+    methods: {
+        sendEditPassengerId(payload) {
+            this.passengerId = payload.passengerId;
+        }
     }
 }
 </script>

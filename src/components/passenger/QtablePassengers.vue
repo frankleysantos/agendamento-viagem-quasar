@@ -1,6 +1,5 @@
 <template lang="">
     <div>
-        {{ passengers.passengers }}
         <q-table
             title="Veículos"
             :rows="passengers.passengers"
@@ -14,7 +13,7 @@
                         :key="col.name"
                         :props="props"
                     >
-                        {{ $t('passenger.'+col.label)  }}
+                        {{ col.label == 'actions' ? $t('general.'+col.label): $t('passenger.'+col.label)  }}
                     </q-th>
                 </q-tr>
             </template>
@@ -32,6 +31,9 @@
                     </q-td>
                     <q-td key="email">
                         {{ props.row.email }}
+                    </q-td>
+                    <q-td key="actions">
+                        <q-btn color="white" text-color="black" label="edit" @click="editPassenger(props.row.passengerId)"/>
                     </q-td>
                 </q-tr>
               </template>
@@ -76,11 +78,23 @@ export default {
                     field: "email",
                     sortable: true,
                 },
+                {
+                    name: "actions",
+                    align: "center",
+                    label: 'actions',
+                    field: 'actions',
+                    sortable: false,
+                },
             ]
         }
     },
     methods: {
-        ...mapActions('passengers', ['ActionGetPassengers'])
+        ...mapActions('passengers', ['ActionGetPassengers']),
+        editPassenger(passengerId) {
+            this.$emit('editPassengerSon', {
+                passengerId: passengerId
+            })
+        }
     },
     computed: {
         ...mapState(['passengers'])
