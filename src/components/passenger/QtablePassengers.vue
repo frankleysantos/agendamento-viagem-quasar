@@ -33,7 +33,8 @@
                         {{ props.row.email }}
                     </q-td>
                     <q-td key="actions">
-                        <q-btn color="white" text-color="black" label="edit" @click="editPassenger(props.row.passengerId)"/>
+                        <q-icon class="cursor-pointer" name="edit"  size="20px" color="primary" @click="editPassenger(props.row.passengerId)"/>
+                        <!-- <q-icon class="cursor-pointer" name="delete" size="20px" color="red-5" @click="editPassenger(props.row.passengerId)"/> -->
                     </q-td>
                 </q-tr>
               </template>
