@@ -2,46 +2,41 @@
     <div
       class="q-gutter-sm"
     >
-      <q-img
-        src="../../assets/countryFlags/brazil.svg"
-        style="width: 32px; height: 24px; cursor: pointer"
-        @click="choiceLang('pt-BR')"
-      />
-      <q-img
-        src="../../assets/countryFlags/united-states.svg"
-        style="width: 32px; height: 24px; cursor: pointer; margin-left: 10px"
-        @click="choiceLang('en-US')"
-      />
-      <q-icon name="manage_accounts" size="24px" class="bg-teal">
+      <q-avatar class="cursor-pointer" color="white" text-color="primary" icon="manage_accounts">
         <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item clickable v-close-popup>
-              <q-item-section>New tab</q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup>
-              <q-item-section>New incognito tab</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable v-close-popup>
-              <q-item-section>Recent tabs</q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup>
-              <q-item-section>History</q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup>
-              <q-item-section>Downloads</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable v-close-popup>
-              <q-item-section>Settings</q-item-section>
+          <q-list style="min-width: 150px">
+            <q-item>
+              <q-item-section>
+                <div class="row q-py-sm">
+                  <div class="col-md">
+                    <strong>{{ $t('general.changeLanguage') }}</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md">
+                    <q-img
+                      class="cursor-flag"
+                      src="../../assets/countryFlags/brazil.svg"
+                      style="width: 32px; height: 24px; cursor: pointer"
+                      @click="choiceLang('pt-BR')"
+                    />
+                    <q-img
+                      class="cursor-flag"
+                      src="../../assets/countryFlags/united-states.svg"
+                      style="width: 32px; height: 24px; cursor: pointer; margin-left: 10px"
+                      @click="choiceLang('en-US')"
+                    />
+                  </div>
+                </div>
+              </q-item-section>
             </q-item>
             <q-separator />
             <q-item clickable v-close-popup @click="logout">
-              <q-item-section>Logout</q-item-section>
+              <q-item-section>{{ $t('general.logout') }}</q-item-section>
             </q-item>
           </q-list>
         </q-menu>
-      </q-icon>
+      </q-avatar>
     </div>
 
 </template>
@@ -73,6 +68,12 @@ export default {
   },
 }
 </script>
-<style lang="">
-    
+<style lang="css">
+ .cursor-flag:hover {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+ }   
 </style>

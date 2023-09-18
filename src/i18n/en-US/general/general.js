@@ -9,6 +9,8 @@ export default {
         enterAllDigits: "Enter all digits",
         invalidCpf: "Invalid cpf",
         actions: "Actions",
-        wantToDelete: "Deseja excluir"
+        wantToDelete: "Deseja excluir",
+        changeLanguage: "Change Language",
+        logout: "Logout",
     }
 };

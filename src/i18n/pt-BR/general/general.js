@@ -9,6 +9,8 @@ export default {
         enterAllDigits: "Informe todos dos digitos",
         invalidCpf: "CPF inválido",
         actions: "Ações",
-        wantToDelete: "Deseja excluir"
+        wantToDelete: "Deseja excluir",
+        changeLanguage: "Trocar Idioma",
+        logout: "Sair",
     }
 };
