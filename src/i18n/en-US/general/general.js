@@ -8,6 +8,7 @@ export default {
         home: "Home",
         enterAllDigits: "Enter all digits",
         invalidCpf: "Invalid cpf",
-        actions: "Actions"
+        actions: "Actions",
+        wantToDelete: "Deseja excluir"
     }
 };

@@ -34,7 +34,7 @@
                     </q-td>
                     <q-td key="actions">
                         <q-icon class="cursor-pointer" name="edit"  size="20px" color="primary" @click="editPassenger(props.row.passengerId)"/>
-                        <!-- <q-icon class="cursor-pointer" name="delete" size="20px" color="red-5" @click="editPassenger(props.row.passengerId)"/> -->
+                        <q-icon class="cursor-pointer" name="delete" size="20px" color="red-5" @click="deletePassenger(props.row)"/>
                     </q-td>
                 </q-tr>
               </template>
@@ -90,11 +90,34 @@ export default {
         }
     },
     methods: {
-        ...mapActions('passengers', ['ActionGetPassengers']),
-        editPassenger(passengerId) {
-            this.$emit('editPassengerSon', {
+        ...mapActions('passengers', ['ActionGetPassengers', 'ActionDeletePassenger']),
+        async editPassenger(passengerId) {
+            await this.$emit('editPassengerSon', {
                 passengerId: passengerId
             })
+        },
+        async deletePassenger(passenger) {
+           await this.$q.dialog({
+                title: `${this.$t('general.wantToDelete')} ${this.$t('passenger.passenger')} ${passenger.passenger}?`,
+                //message: '',
+                //maximized: true,
+                style: "width: auto",
+                html: true,
+                cancel: true,
+                ok: {
+                    label: this.$t('general.delete'),
+                    size: '10px'
+                },
+                cancel: {
+                    color: 'negative',
+                    size: '10px'
+                }
+            }).onOk(async () => {
+                await this.ActionDeletePassenger(passenger.passengerId)
+                .then((resp) => this.ActionGetPassengers())
+            }).onCancel(() => {
+            })
+            
         }
     },
     computed: {

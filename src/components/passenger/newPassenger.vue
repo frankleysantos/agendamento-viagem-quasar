@@ -36,7 +36,7 @@
             </q-input>
         </div>
         <div class="col-md">
-             <q-btn color="white" text-color="black" :label="!passenger.id ? $t('general.save') : 'atualizar'" @click="savePassenger"/>
+             <q-btn color="primary" text-color="white" :label="!passenger.id ? $t('general.save') : $t('general.update')" @click="savePassenger"/>
         </div>
     </div>
 </template>

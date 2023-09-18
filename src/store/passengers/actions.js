@@ -33,3 +33,11 @@ export async function ActionUpdateVehicle(context, payload) {
       .catch((error) => reject(error))
   })
 }
+
+export async function ActionDeletePassenger(context, payload) {
+  return await new Promise((resolve, reject) => {
+    Connection.delete(`passengers/delete/${payload}`)
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error));
+  });
+}

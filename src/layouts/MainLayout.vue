@@ -48,7 +48,7 @@ export default {
           title: 'home',
           caption: 'travelManagement',
           link: "/#/",
-          icon: "no_crash"
+          icon: "grid_view"
         },
         {
           keyI18n: 'vehicle',
@@ -62,7 +62,7 @@ export default {
           title: 'passenger',
           caption: 'passenger',
           link: "/#/passengers",
-          icon: "no_crash"
+          icon: "hail"
         }
       ]
     }

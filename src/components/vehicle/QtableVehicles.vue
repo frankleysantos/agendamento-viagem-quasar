@@ -1,5 +1,5 @@
 <template lang="">
-    <q-pull-to-refresh @refresh="teste">
+    <q-pull-to-refresh @refresh="refreshTable">
         <q-table
             title="Veículos"
             :rows="vehicles.vechicles"
@@ -26,27 +26,32 @@
                         Veiculo
                       <q-input v-model="scope.value" dense autofocus counter>
                         <template v-slot:append>
-                            <q-icon name="save" color="orange" @click="updateVehicle(props.row, scope.value, 'name')"/>
+                            <q-icon name="save" color="primary" @click="updateVehicle(props.row, scope.value, 'name')"/>
                           </template>
                       </q-input>
                     </q-popup-edit>
                   </q-td>
                   <q-td key="plate">
                     {{ props.row.plate }}
-                    <q-popup-edit v-model="props.row.vehicle" v-slot="scope">
+                    <q-popup-edit v-model="props.row.plate" v-slot="scope">
                         Placa
                       <q-input v-model="scope.value" dense autofocus counter>
                         <template v-slot:append>
-                            <q-icon name="save" color="orange" @click="updateVehicle(props.row, scope.value, 'name')"/>
+                            <q-icon class="cursor-pointer" name="save" color="primary" @click="updateVehicle(props.row, scope.value, 'plate')"/>
                           </template>
                       </q-input>
                     </q-popup-edit>
                   </q-td>
                   <q-td key="year">
                     {{ props.row.year }}
-                    <!-- <q-popup-edit v-model="props.row.name" v-slot="scope">
-                      <q-input v-model="scope.value" dense autofocus counter />
-                    </q-popup-edit> -->
+                    <q-popup-edit v-model="props.row.year" v-slot="scope">
+                        Placa
+                      <q-input v-model="scope.value" dense autofocus counter>
+                        <template v-slot:append>
+                            <q-icon class="cursor-pointer" name="save" color="primary" @click="updateVehicle(props.row, scope.value, 'year')"/>
+                          </template>
+                      </q-input>
+                    </q-popup-edit>
                   </q-td>
                 </q-tr>
               </template>
@@ -95,7 +100,6 @@ export default {
         };
     },
     async mounted() {
-        // this.ActionGetProfile();
         this.ActionGetVehicles();
     },
     computed: {
@@ -108,7 +112,7 @@ export default {
             var vm = this;
             vm.vehicle = {
                 id: vehicleRow.vehicleId,
-                name: key == 'name' ? value : vehicleRow.name,
+                name: key == 'name' ? value : vehicleRow.vehicle,
                 plate: key == 'plate' ? value : vehicleRow.plate,
                 color: key == 'color' ? value : vehicleRow.color,
                 year: key == 'year' ? value : vehicleRow.year,
@@ -121,7 +125,7 @@ export default {
                     this.ActionGetVehicles();
                 });
         },
-        async teste(done) {
+        async refreshTable(done) {
             setTimeout(() => {
                 this.ActionGetVehicles();
                 done()
