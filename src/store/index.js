@@ -4,6 +4,9 @@ import auth from "./auth";
 import vehicles from "./vehicles";
 import language from "./language";
 import passengers from "./passengers";
+import drivers from "./drivers";
+import states from "./states";
+import cities from "./cities";
 
 
 // import example from './module-example'
@@ -23,7 +26,10 @@ export default store(function (/* { ssrContext } */) {
       auth,
       vehicles,
       language,
-      passengers
+      passengers,
+      drivers,
+      states,
+      cities
     },
 
     // enable strict mode (adds overhead!)

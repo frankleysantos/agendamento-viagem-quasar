@@ -12,5 +12,6 @@ export default {
         wantToDelete: "Deseja excluir",
         changeLanguage: "Change Language",
         logout: "Logout",
+        updatedSuccessfully: "Updated successfully"
     }
 };

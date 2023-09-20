@@ -1,6 +1,8 @@
 import login from "./login";
 import vehicles from "./vehicles";
 import passengers from "./passengers";
+import drivers from "./drivers";
+import scheduledTrips from "./scheduledTrips";
 
 const routes = [
   {
@@ -18,7 +20,9 @@ const routes = [
       },
       ...login,
       ...vehicles,
-      ...passengers
+      ...passengers,
+      ...drivers,
+      ...scheduledTrips
     ],
   },
 

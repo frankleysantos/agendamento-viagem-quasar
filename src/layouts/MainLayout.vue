@@ -63,6 +63,20 @@ export default {
           caption: 'passenger',
           link: "/#/passengers",
           icon: "hail"
+        },
+        {
+          keyI18n: 'drivers',
+          title: 'driver',
+          caption: 'drivers',
+          link: "/#/drivers",
+          icon: "commute"
+        },
+        {
+          keyI18n: 'scheduledTrips',
+          title: 'scheduledTrips',
+          caption: 'scheduledTrips',
+          link: "/#/scheduledTrips",
+          icon: "commute"
         }
       ]
     }

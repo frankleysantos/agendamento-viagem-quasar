@@ -120,8 +120,14 @@ export default {
                 description: key == 'description' ? value : vehicleRow.description,
                 mileage: key == 'mileage' ? value : vehicleRow.mileage[0].last_mileage,
             };
+
             this.ActionUpdateVehicle(vm.vehicle)
                 .then((resp) => {
+                    this.$q.notify({
+                        type: 'positive',
+                        message: this.$t('general.updatedSuccessfully'),
+                        position: "top-right"
+                    });
                     this.ActionGetVehicles();
                 });
         },
